@@ -1,6 +1,44 @@
 # 📚 Library Management System (LMS)
 
+![Library Management System](screenshots/cover.png)
+
 A web-based Library Management System built with PHP and MySQL. The application supports multi-branch library operations and provides role-specific dashboards for administrators, branch managers, librarians, and members.
+
+![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-MariaDB%2010.4-4479A1?logo=mysql&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?logo=bootstrap&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+---
+
+## Overview
+
+### User Roles
+
+![User Roles](screenshots/roles.png)
+
+### System Architecture
+
+![System Architecture](screenshots/architecture.png)
+
+### Database Schema
+
+![Database Schema](screenshots/database.png)
+
+<!--
+Add your real app screenshots here once they are in the screenshots/ folder,
+then remove this comment wrapper.
+
+## Screenshots
+
+| Member Catalog | Librarian Panel |
+|---|---|
+| ![Catalog](screenshots/member-catalog.png) | ![Librarian](screenshots/librarian-panel.png) |
+
+| Branch Manager | Admin Dashboard |
+|---|---|
+| ![Manager](screenshots/branch-manager.png) | ![Admin](screenshots/admin-dashboard.png) |
+-->
 
 ---
 
@@ -88,6 +126,7 @@ lms/
 │   └── uploads/
 │       ├── covers/            # Uploaded book cover images
 │       └── profiles/          # User profile pictures
+└── screenshots/               # README images
 ```
 
 ---
@@ -125,16 +164,20 @@ The database is named `library_ms` and contains the following tables:
 ### Steps
 
 1. **Clone or extract** the project into your web server's root (e.g., `htdocs/lms` for XAMPP):
+   ```bash
+   git clone https://github.com/dnsakibss/LIBRARY-MANAGEMENT-SYSTEM-Web_Tech_Project.git lms
+   ```
    ```
    htdocs/
    └── lms/
    ```
 
-2. **Create the database** using the provided SQL dump:
+2. **Create the database** using the schema in `config/schema.sql`:
    ```bash
-   mysql -u root -p < library_ms.sql
+   mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS library_ms"
+   mysql -u root -p library_ms < config/schema.sql
    ```
-   Or import via phpMyAdmin.
+   Or create a database named `library_ms` in phpMyAdmin and import `config/schema.sql` into it.
 
 3. **Configure the database connection** in `config/db.php`:
    ```php
@@ -163,7 +206,7 @@ The database is named `library_ms` and contains the following tables:
 
 ## Default Credentials
 
-The database seed includes a default admin account. Check the SQL dump or create a user directly via the registration page and update their role in the `users` table.
+The database seed may include a default admin account. Check `config/schema.sql`, or create a user through the registration page and change their role in the `users` table.
 
 ---
 
